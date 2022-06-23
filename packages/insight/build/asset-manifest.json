@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d0aa35e2.css",
+    "main.js": "/static/js/main.0a2253c3.js",
+    "static/media/plus-dark-background.svg": "/static/media/plus-dark-background.c1c6084cdba68b024e05a6bfcd4489f9.svg",
+    "static/media/plus-light-background.svg": "/static/media/plus-light-background.75b2877f532b642c0137696bfb537de4.svg",
+    "static/media/bitpay-logo-blue.svg": "/static/media/bitpay-logo-blue.7b27d7279ae35ce38e33e29837c489a0.svg",
+    "static/media/bitpay-logo-white.svg": "/static/media/bitpay-logo-white.6d81938f96e4b818bb431e4393acd76b.svg",
+    "static/media/tick.svg": "/static/media/tick.cbe66c952dcc2339ec4943f71eca38a5.svg",
+    "static/media/sun.svg": "/static/media/sun.8418739da43307f74d3e5aa761639132.svg",
+    "index.html": "/index.html",
+    "static/media/copy-icon.svg": "/static/media/copy-icon.0b9b0ebd6031162174988be7dc1b41c5.svg",
+    "static/media/search-light.svg": "/static/media/search-light.fcbd5e59e1df06dbb19a0aa73237eb6b.svg",
+    "static/media/search-dark.svg": "/static/media/search-dark.5a18ace1e053d2b7db1712e92f1b9cbc.svg",
+    "static/media/arrow.svg": "/static/media/arrow.3e755b29a7a4f94fc0c18135309ffdf8.svg",
+    "static/media/moon.svg": "/static/media/moon.3849fe4e022b453fe5d384bf1844e0be.svg",
+    "static/media/large-thin-spinner.svg": "/static/media/large-thin-spinner.2909bb5106ef756eb9500952c234ed06.svg",
+    "main.d0aa35e2.css.map": "/static/css/main.d0aa35e2.css.map",
+    "main.0a2253c3.js.map": "/static/js/main.0a2253c3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d0aa35e2.css",
+    "static/js/main.0a2253c3.js"
+  ]
+}
