@@ -23,7 +23,12 @@ import {
 import {Tile, TileDescription} from '../assets/styles/tile';
 import ArrowSvg from '../assets/images/arrow.svg';
 import {useNavigate, createSearchParams} from 'react-router-dom';
+import styled from 'styled-components';
 
+const MintDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const TransactionDetails = ({
   transaction,
   currency,
@@ -77,54 +82,56 @@ const TransactionDetails = ({
             <>
               {aggregateItems(inputs).map((vi: any, i: number, arr: any[]) => {
                 return (
-                  <Tile key={i} invertedBorderColor={arr.length > 1 && arr.length !== i + 1}>
-                    {showDetails && (
-                      <ArrowDiv margin='auto .5rem auto 0'>
-                        <img
-                          src={ArrowSvg}
-                          width={17}
-                          height={17}
-                          alt='arrow'
-                          onClick={() => goToTx(vi.items[0].mintTxid, i, false)}
-                        />
-                      </ArrowDiv>
-                    )}
+                  <div key={i}>
+                    {vi.items.map((item: any, itemIndex: number) => (
+                      <Tile
+                        key={item.mintTxid}
+                        invertedBorderColor={arr.length > 1 && arr.length !== i + 1}>
+                        {showDetails && (
+                          <ArrowDiv margin='auto .5rem auto 0'>
+                            <img
+                              src={ArrowSvg}
+                              width={17}
+                              height={17}
+                              alt='arrow'
+                              onClick={() => goToTx(item.mintTxid, itemIndex, false)}
+                            />
+                          </ArrowDiv>
+                        )}
 
-                    <TileDescription padding='0 1rem 0 0' value>
-                      {getAddress(vi) !== 'Unparsed address' ? (
-                        <SpanLink onClick={() => goToAddress(getAddress(vi))}>
-                          {getAddress(vi)}
-                        </SpanLink>
-                      ) : (
-                        <span>Unparsed address</span>
-                      )}
-
-                      {showDetails && (
-                        <div>
-                          {confirmations > 0 && (
-                            <ScriptText>
-                              <b>Confirmations</b> {confirmations}
-                            </ScriptText>
+                        <TileDescription padding='0 1rem 0 0' value>
+                          {getAddress(vi) !== 'Unparsed address' ? (
+                            <SpanLink onClick={() => goToAddress(getAddress(vi))}>
+                              {getAddress(vi)}
+                            </SpanLink>
+                          ) : (
+                            <span>Unparsed address</span>
                           )}
 
-                          <ScriptText>
-                            <b>Unlocking Script</b>
-                          </ScriptText>
+                          {showDetails && (
+                            <div>
+                              {item.uiConfirmations &&
+                              confirmations > 0 ? (
+                                <ScriptText>
+                                  <b>Confirmations</b> {item.uiConfirmations + confirmations}
+                                </ScriptText>
+                              ) : null}
 
-                          {vi.items.map(
-                            (item: any, index: number) =>
-                              item.scriptSig && (
-                                <ScriptText key={index}>{item.scriptSig.asm}</ScriptText>
-                              ),
+                              <ScriptText>
+                                <b>Unlocking Script</b>
+                              </ScriptText>
+
+                              {item.scriptSig && <ScriptText>{item.scriptSig.asm}</ScriptText>}
+                            </div>
                           )}
-                        </div>
-                      )}
-                    </TileDescription>
+                        </TileDescription>
 
-                    <TileDescription value textAlign='right'>
-                      {getConvertedValue(vi.value, currency)} {currency}
-                    </TileDescription>
-                  </Tile>
+                        <TileDescription value textAlign='right'>
+                          {getConvertedValue(item.value, currency)} {currency}
+                        </TileDescription>
+                      </Tile>
+                    ))}
+                  </div>
                 );
               })}
             </>
